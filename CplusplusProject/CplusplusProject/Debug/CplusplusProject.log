@@ -1,0 +1,9 @@
+﻿  pch.cpp
+  CplusplusProject.cpp
+c:\users\ville\source\repos\cplusplusproject\cplusplusproject\cplusplusproject.cpp(102): warning C4018: '<': signed/unsigned mismatch
+c:\users\ville\source\repos\cplusplusproject\cplusplusproject\cplusplusproject.cpp(143): warning C4018: '>': signed/unsigned mismatch
+c:\users\ville\source\repos\cplusplusproject\cplusplusproject\cplusplusproject.cpp(172): warning C4018: '<': signed/unsigned mismatch
+c:\users\ville\source\repos\cplusplusproject\cplusplusproject\cplusplusproject.cpp(176): warning C4018: '<': signed/unsigned mismatch
+c:\users\ville\source\repos\cplusplusproject\cplusplusproject\cplusplusproject.cpp(184): warning C4018: '<': signed/unsigned mismatch
+c:\users\ville\source\repos\cplusplusproject\cplusplusproject\cplusplusproject.cpp(187): warning C4018: '<': signed/unsigned mismatch
+  CplusplusProject.vcxproj -> C:\Users\Ville\source\repos\CplusplusProject\Debug\CplusplusProject.exe
