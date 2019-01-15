@@ -36,7 +36,7 @@ private:
 Repair::Repair(string value, string value2) {
 	client = value;
 	description = value2;
-	workDone = "";
+	workDone = "-";
 	time = 0;
 	status = "pending";
 }
@@ -47,7 +47,7 @@ void Repair::display() {
 	cout << "client " << client << " - description " << description << " - work done " << workDone << " - time " << time << " - status " << status << endl;
 }
 string Repair::stringValue() {
-	string value = "client " + client + " - description " + description + " - work done " + workDone + " - time " + to_string(time) + " - status " + status + "\n";
+	string value = client + "\n" + description + "\n" + workDone + "\n" + to_string(time) + "\n" + status + "\n";
 	return value;
 }
 void Repair::setDescription(const string value) {
@@ -87,6 +87,9 @@ int main()
 	ifstream inFile;
 	vector<Repair> topRepairs;
 	string line;
+	string word;
+	string valueWord[10];
+	int words=0;
 	while (true) {
 		switch (valueSwitch) {
 		case 0:
@@ -94,23 +97,54 @@ int main()
 			valueSwitch = 99;
 			break;
 		case 1:
-			repairs.erase(repairs.begin(), repairs.end());
+			repairs.clear();
+			out.open("jobs.txt");
+			out << "";
+			out.close();
 			valueSwitch = 99;
 			break;
 		case 2:
-			out.open("jobs.txt", fstream::app);
+			out.open("jobs.txt");
+			//fstream::app
 			for (int i = 0; i < repairs.size(); i++) {
 				out << repairs[i].stringValue();
 			};
 			out.close();
+			repairs.clear();
 			valueSwitch = 99;
 			break;
 		case 3:
 			inFile.open("jobs.txt");
-			while (getline(inFile, line))
-			{
-				cout << line << endl;
-			}
+			repairs.clear();
+			while (!inFile.eof()) {
+				if (words == 0) {
+					inFile >> word;
+					job.setClient(word);
+				}
+				else if (words == 1) {
+					inFile >> word;
+					job.setDescription(word);
+				}
+				else if (words == 2) {
+					inFile >> word;
+					job.setJob(word);
+				}
+				else if (words == 3) {
+					inFile >> jobTimeValue;
+					job.setTime(jobTimeValue);
+				}
+				else {
+					inFile >> word;
+					job.setStatus(word);
+					repairs.push_back(job);
+				};
+				if (words < 4) {
+					words++;
+				}
+				else {
+					words = 0;
+				};
+			};
 			inFile.close();
 			valueSwitch = 99;
 			break;
